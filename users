@@ -1,0 +1,51 @@
+class User:		
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+        self.account = BankAccount(int_rate = 0.02, balance=0)
+        self.account2 = BankAccount(int_rate = 0.02, balance=0)
+    def transfer_money(self, amount, other_user):
+        self.make_withdrawl(amount)
+        other_user.make_deposit(amount)
+        return self
+
+class BankAccount:
+    def __init__(self, int_rate, balance):
+        self.intrest = int_rate
+        self.new_balance = balance
+    def deposit(self, amount):
+        self.new_balance += amount
+        return self
+    def withdraw(self, amount):
+        if self.new_balance < amount:
+            self.new_balance -= 5
+            print("Insufficient funds: Charging a $5 fee")
+            return self
+        else: 
+            self.new_balance-= amount
+            return self
+    def display_account_info(self): 
+       print("Balance:$ " + str(self.new_balance))
+       return self
+    def yield_intrest(self):
+        if self.intrest >0:
+            self.new_balance += self.new_balance * self.intrest
+            print(self.new_balance)
+            return self
+
+
+karla = User("Karla", "kmald@yahoo.com")
+hiya = User("Hiya", "ymoney@yahoo.com")
+lorena = User("Lorena", "lore@yahoo.com")
+
+
+karla.account.deposit(500).display_account_info()
+karla.account2.deposit(300).display_account_info()
+
+
+
+
+
+
+
+
