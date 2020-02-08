@@ -1,0 +1,25 @@
+class BankAccount:
+    def __init__(self, int_rate, balance):
+        self.intrest = int_rate
+        self.new_balance = balance
+    def deposit(self, amount):
+        self.new_balance += amount
+        return self
+    def withdraw(self, amount):
+        if self.new_balance < 0:
+            self.new_balance -5 and print("Insufficient funds: Charging a $5 fee")
+        else: 
+            self.new_balance-= amount
+            return self
+    def display_account_info(self): 
+       print("Balance: " + str(self.new_balance))
+       return self
+    def yield_intrest(self):
+         if self.intrest >0:
+            self.new_balance += self.new_balance * self.intrest
+            print(self.new_balance)
+            return self
+karla= BankAccount(.02, 300).deposit(300).deposit(200).deposit(200).withdraw(100)
+ben= BankAccount(.01, 300).deposit(300).deposit(200).withdraw(50).withdraw(50).withdraw(50).withdraw(50)
+karla.display_account_info().yield_intrest()
+ben.display_account_info().yield_intrest()
