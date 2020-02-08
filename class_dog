@@ -1,0 +1,39 @@
+class User:
+    def __init__(self, userName, userAge):
+        self.name = userName
+        self.age = userAge
+
+class Dog:
+    def __init__(self, petName, petColor, ownerName, ownerAge):
+        print("Dog __int__function has run!")
+        self.name = petName
+        self.color = petColor
+        self.owner = User(ownerName, ownerAge)  
+    def bark(self):
+        print(self.name + "says OW OW!") 
+        return self
+    def play(self, toy):
+        print(self.name + " loves playing with his" + toy)
+        return self
+    def lick(self, other_pet):
+        print(self.name + " has licked" + other_pet.name)
+        return self
+    def owner_info(self): #don't need ownerName is because we've store the  user (self.owner) inside of dict of dog already
+        print(self.name + "'s owner is " + self.owner.name)
+        print(self.owner.name + " is " + str(self.owner.age))
+        return self
+
+odie = Dog("Odie", "brown", "Jon", 40) 
+pluto = Dog("Pluto", "yellow", "Paul", 30)
+snoopy = Dog("Snoopy", "white", "James", 38)
+#pluto.bark() #to access the name 
+snoopy.play("bone") #since no info about the toy, you have to pass it in
+pluto.lick(snoopy)
+odie.owner_info().bark() #chaining can do multiple things are once, instead of calling on each thing. just have to put return on each of the functions. 
+
+# how to craete a key in a dict :
+# these are two ways to add keys into a dict
+# user= {"name": "AK"}
+# username2 ={} this is a dict
+# username2["name"] = "AK" this is a key inside a dict
+#line 5 self is the instantiator being called, .name is what you are wanting to call the key, and petName is the parameter you are going to be passing rhough (the key you're giving) when you pass on line 2
